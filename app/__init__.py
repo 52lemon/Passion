@@ -26,13 +26,13 @@ def create_app():
     moment.init_app(app)
     login_manager.init_app(app)
 
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    from .main import main
+    app.register_blueprint(main)
 
-    from .admin import admin as admin_blueprint
-    app.register_blueprint(admin_blueprint, url_prefix='/admin')
+    from .admin import admin
+    app.register_blueprint(admin, url_prefix='/admin')
 
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    from .auth import auth
+    app.register_blueprint(auth, url_prefix='/auth')
 
     return app
