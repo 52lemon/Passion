@@ -23,6 +23,7 @@ app.jinja_env.globals['Source'] = Source
 app.jinja_env.globals['Article'] = Article
 app.jinja_env.globals['Comment'] = Comment
 app.jinja_env.globals['BlogView'] = BlogView
+app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = False
 
 
 def make_shell_context():

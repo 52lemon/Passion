@@ -16,7 +16,7 @@
 </head>
 <body>
 <header>
-    <div class='header-top'>
+    <div class='header-top' style="display: none;">
         <div class="container">
             <h2  class="blog-title"><a href="{{ url_for('main.index') }}">{{ BlogInfo.query.first().title }}</a></h2>
 {#            <p class="lead signature">#}
@@ -33,6 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="/"><span itemprop="name" style="letter-spacing: 0.3rem;font-size: 2.1rem;font-weight: bold;">昨夜飞屋</span></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
