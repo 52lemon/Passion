@@ -5,26 +5,37 @@
 {% endblock %}
 
 {% block admin_content %}
-<div class="entry-box submit-article">
-    <h4><strong>添加插件</strong></h4>
-    <hr/>
-    <div>
-    <form class="add-blog-plugin" method="post" action="">
-        {{ form.csrf_token }}
-        <div class="form-group">
-            {{ form.title.label }}
-            {{ form.title(class='form-control', required='') }}
-            {{ form.note.label }}（可选）
-            {{ form.note(class='form-control') }}
-            {{ form.content.label }}
-            {{ form.content(id='pluginContent') }}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">添加插件</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="entry-box submit-article">
+                        <div>
+                            <form class="add-blog-plugin" method="post" action="">
+                                {{ form.csrf_token }}
+                                <div class="form-group">
+                                    {{ form.title.label }}
+                                    {{ form.title(class='form-control', required='') }}
+                                    {{ form.note.label }}（可选）
+                                    {{ form.note(class='form-control') }}
+                                    {{ form.content.label }}
+                                    {{ form.content(id='pluginContent') }}
+                                </div>
+                                <div class="add-plugin-button">
+                                    <button type="submit" class="btn btn-success">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="add-plugin-button">
-            <button type="submit" class="btn btn-success">提交</button>
-        </div>
-    </form>
     </div>
-</div>
+
 {% endblock %}
 
 {% block script %}

@@ -8,6 +8,9 @@
     {{ super() }}
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename='tinymce/js/tinymce/plugins/codesample/css/prism.css') }}">
+    <link href="{{ url_for('static',filename='plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='plugins/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='plugins/chosen/chosen.min.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block script %}
@@ -15,33 +18,47 @@
     <script src="{{ url_for('static', filename='tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ url_for('static', filename='tinymce/js/tinymce/plugins/codesample/plugin.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/tinymce_setup.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plugins/select2/js/select2.min.js') }}"></script>
 {% endblock %}
 
 {% block admin_content %}
-<div class="entry-box submit-article">
-    <h4><strong>发表博文</strong></h4>
-    <hr/>
-    <form class="submit-article" method="post" action="">
-        {{ form.csrf_token }}
-        <div class="form-group">
-            {{ form.title.label(class='control-label') }}：
-            {{ form.source(class='', required='') }}
-            {{ form.title(class='submit-article-title', required='') }}（1-50字）
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">发表博文</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="entry-box submit-article">
+                        <form class="submit-article" method="post" action="">
+                            {{ form.csrf_token }}
+                            <div class="form-group">
+{#                                {{ form.title.label(class='control-label') }}：#}
+                                {{ form.title(class='submit-article-title form-control', required='') }}（1-50字）
+                            </div>
+                            <div class="form-group">
+                                {{ form.content() }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.types.label(class='control-label') }}：
+                                {{ form.types() }}
+{#                                {{ form.source(class='selectpicker', required='') }}#}
+                                {{ form.source(class='', required='') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.summary.label(class='control-label') }}（显示在博客首页）<br>
+                                {{ form.summary(class='submit-article-summary form-control', required='') }}
+                            </div>
+                            <div class="submit-article-button">
+                                <button type="submit" class="btn btn-success">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{ form.content() }}
-        </div>
-        <div class="form-group">
-            {{ form.types.label(class='control-label') }}：
-            {{ form.types() }}
-        </div>
-        <div class="form-group">
-            {{ form.summary.label(class='control-label') }}（显示在博客首页）<br>
-            {{ form.summary(class='submit-article-summary form-control', required='') }}
-        </div>
-        <div class="submit-article-button">
-            <button type="submit" class="btn btn-success">提交</button>
-        </div>
-    </form>
-</div>
+    </div>
+
 {% endblock %}

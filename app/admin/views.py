@@ -20,8 +20,13 @@ from .. import db
 
 @admin.route('/')
 @login_required
-def manager():
-    return redirect(url_for('admin.custom_blog_info'))
+def index():
+    return render_template('admin/admin_base.html')
+
+# @admin.route('/')
+# @login_required
+# def manager():
+#     return redirect(url_for('admin.custom_blog_info'))
 
 
 @admin.route('/submit-articles', methods=['GET', 'POST'])

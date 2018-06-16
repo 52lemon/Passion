@@ -1,45 +1,124 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>仪表板|俏皮-管理模板</title>
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        <!--Open Sans Font [ OPTIONAL ]-->
+        {% block css %}
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet'
+                  type='text/css'>
+            <!--Bootstrap Stylesheet [ REQUIRED ]-->
+            <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+            <!--Nifty Stylesheet [ REQUIRED ]-->
+            <link href="/static/css/nifty.min.css" rel="stylesheet">
+            <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+            <link href="/static/css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+            <!--Demo [ DEMONSTRATION ]-->
+            <link href="/static/css/demo/nifty-demo.min.css" rel="stylesheet">
+            <!--Morris.js [ OPTIONAL ]-->
+            <link href="/static/plugins/morris-js/morris.min.css" rel="stylesheet">
+            <!--Magic Checkbox [ OPTIONAL ]-->
+            <link href="/static/plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
+            <!--JAVASCRIPT-->
+            <!--=================================================-->
+            <!--Pace - Page Load Progress Par [OPTIONAL]-->
+            <link href="/static/plugins/pace/pace.min.css" rel="stylesheet">
+        {% endblock %}
+    </head>
+{% endblock %}
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+<div id="container" class="effect aside-float aside-bright mainnav-lg">
+    <!--NAVBAR-->
+    <!--===================================================-->
+    {% include 'admin/header.html' %}
+    <!--===================================================-->
+    <!--END NAVBAR-->
+    <div class="boxed">
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <!--Page Title-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{#            <div id="page-title">#}
+{#                <h1 class="page-header text-overflow">仪表板</h1>#}
+{#            </div>#}
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End page title-->
+
+            <!--Page content-->
+            <!--===================================================-->
+            <div id="page-content">
+
+                {% block page_title %}
+                {% endblock %}
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <div class="alert alert-{{ category }} alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% block admin_content %}
+
+                {% endblock %}
+
+            </div>
+            <!--===================================================-->
+            <!--End page content-->
 
 
-{% block Content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-2 entry-box" style="background-color: ">
-            <ul class="nav nav-list">
-				<li class="nav-header">博文管理</li>
-				<li><a href="{{ url_for('admin.submitArticles') }}">发表博文</a></li>
-				<li><a href="{{ url_for('admin.manage_articles') }}">管理博文</a></li>
-				<li><a href="{{ url_for('admin.manage_articleTypes') }}">博文分类</a></li>
-
-				<li class="nav-header">评论管理</li>
-				<li><a href="{{ url_for('admin.manage_comments') }}">博文评论</a></li>
-
-                <li class="nav-header">博客定制</li>
-				<li><a href="{{ url_for('admin.custom_blog_info') }}">基本信息</a></li>
-				<li><a href="{{ url_for('admin.custom_blog_plugin') }}">插件管理</a></li>
-				<li><a href="{{ url_for('admin.add_plugin') }}">添加插件</a></li>
-
-				<li class="nav-header">其它管理</li>
-				<li><a href="{{ url_for('admin.account') }}">用户账户</a></li>
-				<li><a href="{{ url_for('admin.help') }}">帮助</a></li>
-			</ul>
         </div>
-        <div class="col-md-10">
-            {% for category, message in get_flashed_messages(with_categories=true) %}
-                <div class="alert alert-{{category}} alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ message }}
-                </div>
-            {% endfor %}
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER-->
 
-            {% block admin_content %}
-            {% endblock %}
-        </div>
+        <!--ASIDE-->
+        <!--===================================================-->
+        {#        {% include 'aside.html' %}#}
+        <!--===================================================-->
+        <!--END ASIDE-->
+        <!--MAIN NAVIGATION-->
+        <!--===================================================-->
+        {% include 'admin/main-nav.html' %}
+        <!--===================================================-->
+        <!--END MAIN NAVIGATION-->
     </div>
+    <!-- FOOTER -->
+    <!--===================================================-->
+    {% include 'admin/footer.html' %}
+    <!--===================================================-->
+    <!-- END FOOTER -->
+    <!-- SCROLL PAGE BUTTON -->
+    <!--===================================================-->
+    <button class="scroll-top btn">
+        <i class="pci-chevron chevron-up"></i>
+    </button>
+    <!--===================================================-->
 </div>
-{% endblock %}
+<!--===================================================-->
+<!-- END OF CONTAINER -->
 
+<!-- SETTINGS - DEMO PURPOSE ONLY -->
+<!--===================================================-->
+{% include 'admin/settings.html' %}
+<!--===================================================-->
+<!-- END SETTINGS -->
+<script src="/static/plugins/pace/pace.min.js"></script>
+<!--jQuery [ REQUIRED ]-->
+<script src="/static/js/jquery-2.2.4.min.js"></script>
+<!--BootstrapJS [ RECOMMENDED ]-->
+<script src="/static/js/bootstrap.min.js"></script>
+<!--NiftyJS [ RECOMMENDED ]-->
+<script src="/static/js/nifty.min.js"></script>
+<!--=================================================-->
+<!--Demo script [ DEMONSTRATION ]-->
+<script src="/static/js/demo/nifty-demo.min.js"></script>
 {% block script %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 {% endblock %}
+</body>
+</html>

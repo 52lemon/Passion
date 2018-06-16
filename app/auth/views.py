@@ -11,10 +11,12 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        # User.insert_admin(email='shenbau@163.com', username='juzizhou', password='19880621shp$')
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
             flash(u'登陆成功！欢迎回来，%s!' % user.username, 'success')
-            return redirect(request.args.get('next') or url_for('main.index'))
+            # return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(url_for('admin.index'))
         else:
             flash(u'登陆失败！用户名或密码错误，请重新登陆。', 'danger')
     if form.errors:
