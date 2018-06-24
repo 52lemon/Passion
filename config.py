@@ -8,7 +8,7 @@ class Config():
     SQLALCHEMY_RECORD_QUERIES = True
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     #     'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@localhost:3306/blog_min?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@localhost:3306/blog?charset=utf8'
     ARTICLES_PER_PAGE = 10
     COMMENTS_PER_PAGE = 6
     SECRET_KEY = 'secret key to protect from csrf'
