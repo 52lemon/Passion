@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>仪表板|俏皮-管理模板</title>
+        <title>管理后台</title>
         <!--STYLESHEET-->
         <!--=================================================-->
         <!--Open Sans Font [ OPTIONAL ]-->
@@ -28,6 +28,7 @@
             <!--Pace - Page Load Progress Par [OPTIONAL]-->
             <link href="/static/plugins/pace/pace.min.css" rel="stylesheet">
             <link href="/static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}"  type="image/x-icon">
         {% endblock %}
     </head>
 {% endblock %}
@@ -119,7 +120,9 @@
 <!--=================================================-->
 <!--Demo script [ DEMONSTRATION ]-->
 <script src="/static/js/demo/nifty-demo.min.js"></script>
+
 {% block script %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 {% endblock %}
 </body>
 </html>

@@ -244,4 +244,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'shenbau@163.com', 'juzizhou', 'pbkdf2:sha256:50000$wW1CeM52$3895f55c0991b123d936f25cbc13883e29156351673b5a0696c21660a7e3fdd0', '91450d6c690b3bc5a63ea05999818bbc');
+INSERT INTO `user` VALUES ('1', 'shenbau@163.com', 'juzizhou', 'pbkdf2:sha256:50000$EquUiVWU$cc0d9d9ca4a66fb3107623bd01ae33ed52bb4e67e73d0b117cdeb703547e0ddb', '91450d6c690b3bc5a63ea05999818bbc');

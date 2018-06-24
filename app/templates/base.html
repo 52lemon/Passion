@@ -10,8 +10,30 @@
         {% endblock %}
     </title>
     {% block stylesheet %}
+        <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}"  type="image/x-icon">
         <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+        <style>
+         .title-inline{
+             display: flex;
+    margin: 7px;
+    font-size: 2.1rem;
+         }
+        .title-inline .badge{
+            isplay: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.5;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-color: #777;
+            border-radius: 10px;
+        }
+        </style>
     {% endblock %}
 </head>
 <body>
@@ -104,6 +126,19 @@
                     {% endblock %}
                 </div>
                 <div class="col-md-4 blog_nav">
+                    <div class="entry-box">
+                        <h4><strong>文章分类</strong></h4>
+                        <p>
+                            {% for category in ArticleType.query.all() %}
+                                {% if category.id !=1 %}
+                                    <div class="title-inline">
+                                        <a href="{{ url_for('main.articleTypes', id=category.id) }}" >{{ category.name }}</a>&emsp;
+                                        <span class="badge">{{ category.articles.count() }}</span>&emsp;篇
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
                     {% block blog_nav_plugin %}
                         {% for plugin in Plugin.query.order_by(Plugin.order.asc()).all() %}
                             {% if plugin.disabled != True %}
@@ -139,10 +174,8 @@
 <div class="footer">
     <p class="footer-content">
         @2016
-        <a href="#">Blog_mini</a>
-        -开源博客系统
         {% if not current_user.is_authenticated %}
-            -<a href="{{ url_for('auth.login') }}">
+            -2018<a href="{{ url_for('auth.login') }}">
             <span class="glyphicon glyphicon-wrench">后台管理</span>
         </a>
         {% endif %}
