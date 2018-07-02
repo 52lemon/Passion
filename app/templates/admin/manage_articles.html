@@ -33,9 +33,12 @@
                                                 <span class="glyphicon glyphicon-search"></span> 筛选
                                             </button>
                                         </div>
-                                        <div class="col-sm-2 col-sm-offset-4">
-                                            <a class="btn btn-danger" id="delArticles">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <a  class="btn btn-danger pull-lg-left" id="delArticles">
                                                 <span class="glyphicon glyphicon-trash"></span>批量删除
+                                            </a>
+                                            <a href="{{ url_for('admin.submitArticles') }}" class="btn btn-success pull-right" id="addArticles">
+                                                <span class="glyphicon glyphicon-plus"></span>发布博文
                                             </a>
                                         </div>
                                     </div>
