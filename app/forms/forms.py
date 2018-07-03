@@ -72,7 +72,7 @@ class SortArticleNavTypeForm(AddArticleTypeNavForm):
 class CustomBlogInfoForm(FlaskForm):
     title = StringField(u'博客标题', validators=[DataRequired()])
     signature = TextAreaField(u'个性签名', validators=[DataRequired()])
-    navbar = SelectField(u'导航样式', coerce=int, validators=[DataRequired()])
+    navbars = SelectField(u'导航样式', coerce=int, validators=[DataRequired()])
 
 
 class AddBlogPluginForm(FlaskForm):

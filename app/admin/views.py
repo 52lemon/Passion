@@ -644,15 +644,15 @@ def custom_blog_info():
     form = CustomBlogInfoForm()
 
     navbars = [(1, u'魅力黑'), (2, u'优雅白')]
-    form.navbar.choices = navbars
+    form.navbars.choices = navbars
 
     if form.validate_on_submit():
         blog = BlogInfo.query.first()
         blog.title = form.title.data
         blog.signature = form.signature.data
-        if form.navbar.data == 1:
+        if form.navbars.data == 1:
             blog.navbar = 'inverse'
-        if form.navbar.data == 2:
+        if form.navbars.data == 2:
             blog.navbar = 'default'
         db.session.add(blog)
         db.session.commit()
